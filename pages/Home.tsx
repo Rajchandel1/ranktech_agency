@@ -507,36 +507,23 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
         {/* Trusted By Carousel - Smooth Infinite Auto-Scroll */}
         <ScrollReveal direction="up" delay={200}>
-          <div className="pt-10 border-t border-slate-100 max-w-2xl mx-auto w-full overflow-hidden">
+          <div className="pt-10 border-t border-slate-100 max-w-4xl mx-auto w-full overflow-hidden">
             <div className="text-center mb-8">
               <span className="text-sm font-semibold text-slate-500 uppercase tracking-wide">Trusted by global brands</span>
             </div>
 
-            {/* Infinite Scroll Container */}
-            <div className="relative overflow-hidden">
-              {/* Scrolling Logos */}
-              <div className="flex animate-scroll">
-                {/* First set of logos */}
-                <div className="flex items-center gap-12 px-8">
-                  <img src="/assets/company 1.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
-                  <img src="/assets/company 2.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
-                  <img src="/assets/company 3.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
-                  <img src="/assets/company 4.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
-                </div>
-                {/* Duplicate set for seamless loop */}
-                <div className="flex items-center gap-12 px-8">
-                  <img src="/assets/company 1.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
-                  <img src="/assets/company 2.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
-                  <img src="/assets/company 3.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
-                  <img src="/assets/company 4.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
-                </div>
-                {/* Third set for extra smoothness */}
-                <div className="flex items-center gap-12 px-8">
-                  <img src="/assets/company 1.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
-                  <img src="/assets/company 2.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
-                  <img src="/assets/company 3.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
-                  <img src="/assets/company 4.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
-                </div>
+            {/* Infinite Scroll Container - Full Bleed on Mobile */}
+            <div className="relative -mx-6 md:mx-0 overflow-hidden">
+              <div className="flex animate-scroll py-2">
+                {/* Sets of logos */}
+                {[1, 2, 3].map((set) => (
+                  <div key={set} className="flex items-center gap-12 px-6 flex-shrink-0">
+                    <img src="/assets/company 1.png" alt="Company Logo" className="h-10 md:h-16 w-32 md:w-36 object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                    <img src="/assets/company 2.png" alt="Company Logo" className="h-10 md:h-16 w-32 md:w-36 object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                    <img src="/assets/company 3.png" alt="Company Logo" className="h-10 md:h-16 w-32 md:w-36 object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                    <img src="/assets/company 4.png" alt="Company Logo" className="h-10 md:h-16 w-32 md:w-36 object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                  </div>
+                ))}
               </div>
             </div>
           </div>

@@ -9,7 +9,7 @@ interface SectionProps {
 
 const Section: React.FC<SectionProps> = ({ children, className = "", id, light = false }) => {
   return (
-    <section id={id} className={`py-20 md:py-28 ${light ? 'bg-white' : 'bg-slate-50'} ${className}`}>
+    <section id={id} className={`py-16 md:py-24 relative overflow-hidden ${light ? 'bg-white' : 'bg-slate-50'} ${className}`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {children}
       </div>
