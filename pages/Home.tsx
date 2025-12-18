@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  ArrowRight, Search, BarChart2, Zap, 
+import {
+  ArrowRight, Search, BarChart2, Zap,
   Layers, Globe, TrendingUp, Users, Cpu, Code,
   CheckCircle2, Mail, MapPin, ArrowUpRight, Activity,
   ChevronLeft, ChevronRight
@@ -9,6 +9,7 @@ import Section from '../components/Section';
 import { WorkChart } from '../components/Charts';
 import { GoogleLogo, MetaLogo, InstagramLogo, LinkedInLogo } from '../components/BrandIcons';
 import { HandUnderline, HandArrowCurved, HandCircle, HandSparkle, HandSquiggle, HandArrowLoop } from '../components/Decorations';
+import ScrollReveal from '../components/ScrollReveal';
 import type { CaseStudy, WorkHistory, Service, BlogPost } from '../types';
 
 // --- DATA CONSTANTS ---
@@ -310,9 +311,8 @@ const TestimonialsCarousel: React.FC = () => {
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-colors ${
-              index === currentSlide ? 'bg-blue-600' : 'bg-slate-300'
-            }`}
+            className={`w-3 h-3 rounded-full transition-colors ${index === currentSlide ? 'bg-blue-600' : 'bg-slate-300'
+              }`}
             aria-label={`Go to testimonial ${index + 1}`}
           />
         ))}
@@ -395,187 +395,196 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       )}
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden relative hero-gradient min-h-[90vh] flex flex-col justify-center">
+      <section className="pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden relative hero-gradient flex flex-col justify-center">
         {/* Hand Drawn Decorations - Hero */}
         <HandSparkle className="hidden lg:block absolute top-[20%] left-[20%] w-12 h-12 text-yellow-400 opacity-60 z-0" delay="0.5s" />
         <HandSparkle className="hidden lg:block absolute bottom-[20%] right-[10%] w-8 h-8 text-blue-400 opacity-60 z-0" delay="1s" />
 
         {/* Decorative Blurs */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[500px] bg-gradient-to-r from-blue-200/30 via-indigo-200/30 to-purple-200/30 blur-[100px] rounded-full pointer-events-none -z-10 animate-pulse-slow"></div>
-        
+
         {/* Floating Ecosystem Elements (Absolute around center) */}
         <div className="absolute inset-0 max-w-7xl mx-auto pointer-events-none hidden md:block">
-           {/* Top Left: Meta */}
-           <div className="absolute top-[25%] left-[10%] lg:left-[15%] animate-float z-20">
-              <div className="relative">
-                 <div className="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center">
-                    <MetaLogo className="w-8 h-8 text-blue-600" />
-                 </div>
-                 <svg className="absolute top-1/2 left-full w-24 h-24 -z-10 text-slate-200 opacity-60" style={{transform: 'translateY(-50%)'}}>
-                    <path d="M0,50 Q60,50 100,100" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
-                 </svg>
+          {/* Top Left: Meta */}
+          <div className="absolute top-[25%] left-[10%] lg:left-[15%] animate-float z-20">
+            <div className="relative">
+              <div className="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center">
+                <MetaLogo className="w-8 h-8 text-blue-600" />
               </div>
-           </div>
+              <svg className="absolute top-1/2 left-full w-24 h-24 -z-10 text-slate-200 opacity-60" style={{ transform: 'translateY(-50%)' }}>
+                <path d="M0,50 Q60,50 100,100" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
+              </svg>
+            </div>
+          </div>
 
-           {/* Top Right: Instagram */}
-           <div className="absolute top-[25%] right-[10%] lg:right-[15%] animate-float-delayed z-20">
-               <div className="relative">
-                 <div className="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center">
-                    <InstagramLogo className="w-8 h-8" />
-                 </div>
-                 <svg className="absolute top-1/2 right-full w-24 h-24 -z-10 text-slate-200 opacity-60" style={{transform: 'translateY(-50%)'}}>
-                    <path d="M100,50 Q40,50 0,100" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
-                 </svg>
-               </div>
-           </div>
+          {/* Top Right: Instagram */}
+          <div className="absolute top-[25%] right-[10%] lg:right-[15%] animate-float-delayed z-20">
+            <div className="relative">
+              <div className="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center">
+                <InstagramLogo className="w-8 h-8" />
+              </div>
+              <svg className="absolute top-1/2 right-full w-24 h-24 -z-10 text-slate-200 opacity-60" style={{ transform: 'translateY(-50%)' }}>
+                <path d="M100,50 Q40,50 0,100" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
+              </svg>
+            </div>
+          </div>
 
-           {/* Bottom Left: LinkedIn */}
-           <div className="absolute bottom-[30%] left-[15%] lg:left-[20%] animate-float-delayed z-20">
-               <div className="relative">
-                 <div className="w-14 h-14 bg-white rounded-xl shadow-lg flex items-center justify-center">
-                    <LinkedInLogo className="w-7 h-7" />
-                 </div>
-                 <svg className="absolute bottom-full left-full w-16 h-16 -z-10 text-slate-200 opacity-60">
-                    <path d="M0,100 L50,0" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
-                 </svg>
-               </div>
-           </div>
+          {/* Bottom Left: LinkedIn */}
+          <div className="absolute bottom-[30%] left-[15%] lg:left-[20%] animate-float-delayed z-20">
+            <div className="relative">
+              <div className="w-14 h-14 bg-white rounded-xl shadow-lg flex items-center justify-center">
+                <LinkedInLogo className="w-7 h-7" />
+              </div>
+              <svg className="absolute bottom-full left-full w-16 h-16 -z-10 text-slate-200 opacity-60">
+                <path d="M0,100 L50,0" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
+              </svg>
+            </div>
+          </div>
 
-           {/* Bottom Right: Analytics */}
-           <div className="absolute bottom-[25%] right-[15%] lg:right-[20%] animate-float z-20">
-               <div className="relative">
-                 <div className="w-14 h-14 bg-white rounded-xl shadow-lg flex items-center justify-center text-amber-500">
-                    <BarChart2 className="w-7 h-7" />
-                 </div>
-                 <svg className="absolute bottom-full right-full w-16 h-16 -z-10 text-slate-200 opacity-60">
-                    <path d="M100,100 L50,0" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
-                 </svg>
-               </div>
-           </div>
+          {/* Bottom Right: Analytics */}
+          <div className="absolute bottom-[25%] right-[15%] lg:right-[20%] animate-float z-20">
+            <div className="relative">
+              <div className="w-14 h-14 bg-white rounded-xl shadow-lg flex items-center justify-center text-amber-500">
+                <BarChart2 className="w-7 h-7" />
+              </div>
+              <svg className="absolute bottom-full right-full w-16 h-16 -z-10 text-slate-200 opacity-60">
+                <path d="M100,100 L50,0" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
+              </svg>
+            </div>
+          </div>
         </div>
 
         <div className="text-center max-w-5xl mx-auto px-4 relative z-10">
-          
-          <div className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-bold uppercase tracking-wide mb-6">
-            4+ Years of Proven SEO Results
-          </div>
-          
-        <h1 className="text-5xl md:text-7xl font-bold text-slate-900 tracking-tight mb-8 leading-[1.1] animate-fade-in-up relative">
-            Data-Driven SEO &<br />
-            Digital Strategy
-            <span className="inline-flex items-center align-middle mx-1.5 relative top-1 bg-white p-1 rounded-full shadow-sm border border-slate-100">
-               <GoogleLogo className="w-9 h-9 md:w-12 md:h-12" />
-            </span> 
-            <span className="text-blue-600 relative inline-block">
-               That Delivers
-               <HandUnderline className="absolute -bottom-2 left-0 w-full h-4 text-blue-400 opacity-80" delay="0.8s" />
-            </span>
-          </h1>
-          
+          <ScrollReveal direction="up" duration={800}>
+            <div className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-bold uppercase tracking-wide mb-6">
+              4+ Years of Proven SEO Results
+            </div>
 
-          <p className="text-base md:text-lg text-slate-600 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-            I'm Shravan Chauhan, an SEO Analyst & Digital Marketing Strategist with 4+ years of experience helping brands improve search visibility, boost conversions, and scale organic traffic sustainably.
-          </p>
+            <h1 className="text-5xl md:text-7xl font-bold text-slate-900 tracking-tight mb-8 leading-[1.1] animate-fade-in-up relative">
+              Data-Driven SEO &<br />
+              Digital Strategy
+              <span className="inline-flex items-center align-middle mx-1.5 relative top-1 bg-white p-1 rounded-full shadow-sm border border-slate-100">
+                <GoogleLogo className="w-9 h-9 md:w-12 md:h-12" />
+              </span>
+              <span className="text-blue-600 relative inline-block">
+                That Delivers
+                <HandUnderline className="absolute -bottom-2 left-0 w-full h-4 text-blue-400 opacity-80" delay="0.8s" />
+              </span>
+            </h1>
 
-       <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-  
-  {/* 1. Add this WRAPPER DIV with 'relative' */}
-  <div className="relative">
-    
-    {/* 2. Adjust Arrow Position */}
-    {/* -left-24: Moves it ~6rem to the left of the button (adjust this to get closer/further) */}
-    {/* top-0: Aligns it with the top of the button */}
-     <HandArrowCurved 
-      className="hidden md:block absolute -left-24 -top-20 w-24 h-20 text-slate-800 opacity-60 rotate-10" 
-      delay="1.2s" 
-    />
-    
-    <button 
-      onClick={() => setShowForm(true)} 
-      className="px-8 py-4 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition-all hover:shadow-xl hover:shadow-blue-200/50 transform hover:-translate-y-1 flex items-center group relative z-10"
-    >
-      Book a Consultation 
-      <span className="ml-2 bg-blue-500 rounded-full p-1 group-hover:translate-x-1 transition-transform">
-        <ArrowUpRight size={14} />
-      </span>
-    </button>
-    
-  </div>
-</div>
+            <p className="text-base md:text-lg text-slate-600 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+              I'm Shravan Chauhan, an SEO Analyst & Digital Marketing Strategist with 4+ years of experience helping brands improve search visibility, boost conversions, and scale organic traffic sustainably.
+            </p>
+          </ScrollReveal>
 
-          {/* Mobile-only scattered logos for visual interest if screens are small */}
-          {/* <div className="md:hidden flex justify-center gap-6 opacity-80 mb-12 animate-fade-in-up" style={{animationDelay: '0.4s'}}>
-             <MetaLogo className="w-8 h-8 text-blue-600" />
-             <InstagramLogo className="w-8 h-8" />
-             <LinkedInLogo className="w-8 h-8" />
-             <BarChart2 className="w-8 h-8 text-amber-500" />
-          </div> */}
-        </div>
+          <ScrollReveal direction="up" delay={400} duration={800}>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
 
-        {/* Trusted By Carousel - Discrete Snap Effect */}
-        <div className="pt-10 border-t border-slate-100 max-w-6xl mx-auto w-full overflow-hidden">
-           <div className="flex flex-col md:flex-row items-center justify-between gap-8 px-8 mb-6 md:mb-0">
-             <span className="text-sm font-semibold text-slate-500 uppercase tracking-wide whitespace-nowrap md:mr-8">Trusted by global brands</span>
-             
-             {/* Slider Window */}
-             <div className="flex-1 w-full overflow-hidden relative mask-linear-fade">
-                <div 
-                  className="flex items-center gap-12 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
-                  style={{ transform: `translateX(-${brandIndex * 150}px)` }} // Moving by 150px steps (approx item width)
+              {/* 1. Add this WRAPPER DIV with 'relative' */}
+              <div className="relative">
+
+                {/* 2. Adjust Arrow Position */}
+                {/* -left-24: Moves it ~6rem to the left of the button (adjust this to get closer/further) */}
+                {/* top-0: Aligns it with the top of the button */}
+                <HandArrowCurved
+                  className="hidden md:block absolute -left-24 -top-20 w-24 h-20 text-slate-800 opacity-60 rotate-10"
+                  delay="1.2s"
+                />
+
+                <button
+                  onClick={() => setShowForm(true)}
+                  className="px-8 py-4 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition-all hover:shadow-xl hover:shadow-blue-200/50 transform hover:-translate-y-1 flex items-center group relative z-10"
                 >
-                  {displayBrands.map((brand, idx) => (
-                    <div key={idx} className="flex-shrink-0 flex items-center space-x-2 text-lg font-bold text-slate-400 grayscale hover:grayscale-0 hover:text-slate-600 transition-colors duration-300 w-[150px]">
-                      <brand.icon className="h-5 w-5 flex-shrink-0" />
-                      <span>{brand.name}</span>
-                    </div>
-                  ))}
-                </div>
-             </div>
-           </div>
+                  Book a Consultation
+                  <span className="ml-2 bg-blue-500 rounded-full p-1 group-hover:translate-x-1 transition-transform">
+                    <ArrowUpRight size={14} />
+                  </span>
+                </button>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
+
+        {/* Trusted By Carousel - Smooth Infinite Auto-Scroll */}
+        <ScrollReveal direction="up" delay={200}>
+          <div className="pt-10 border-t border-slate-100 max-w-2xl mx-auto w-full overflow-hidden">
+            <div className="text-center mb-8">
+              <span className="text-sm font-semibold text-slate-500 uppercase tracking-wide">Trusted by global brands</span>
+            </div>
+
+            {/* Infinite Scroll Container */}
+            <div className="relative overflow-hidden">
+              {/* Scrolling Logos */}
+              <div className="flex animate-scroll">
+                {/* First set of logos */}
+                <div className="flex items-center gap-12 px-8">
+                  <img src="/src/assets/company 1.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                  <img src="/src/assets/company 2.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                  <img src="/src/assets/company 3.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                  <img src="/src/assets/company 4.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                </div>
+                {/* Duplicate set for seamless loop */}
+                <div className="flex items-center gap-12 px-8">
+                  <img src="/src/assets/company 1.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                  <img src="/src/assets/company 2.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                  <img src="/src/assets/company 3.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                  <img src="/src/assets/company 4.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                </div>
+                {/* Third set for extra smoothness */}
+                <div className="flex items-center gap-12 px-8">
+                  <img src="/src/assets/company 1.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                  <img src="/src/assets/company 2.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                  <img src="/src/assets/company 3.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                  <img src="/src/assets/company 4.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
       </section>
 
       {/* Methodology Section (Redesigned) */}
       <Section id="features" className="relative overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-
           {/* Left Content */}
           <div className="relative z-10 order-2 lg:order-1">
-            {/* Decoration */}
-            <HandSquiggle className="absolute -left-12 top-0 h-48 w-12 text-blue-100 -z-10 hidden lg:block" />
+            <ScrollReveal direction="left">
+              {/* Decoration */}
+              <HandSquiggle className="absolute -left-12 top-0 h-48 w-12 text-blue-100 -z-10 hidden lg:block" />
 
-            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-slate-900 mb-4 md:mb-6 leading-tight">
-              How I <span className="text-blue-600">Drive Growth</span>
-            </h2>
-            <p className="text-base md:text-lg text-slate-500 mb-8 md:mb-10 leading-relaxed max-w-lg">
-              My approach combines technical precision with strategic content execution to deliver sustainable, search-led business growth — not vanity traffic.
-            </p>
+              <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-slate-900 mb-4 md:mb-6 leading-tight">
+                How I <span className="text-blue-600">Drive Growth</span>
+              </h2>
+              <p className="text-base md:text-lg text-slate-500 mb-8 md:mb-10 leading-relaxed max-w-lg">
+                My approach combines technical precision with strategic content execution to deliver sustainable, search-led business growth — not vanity traffic.
+              </p>
 
-            <div className="space-y-6 md:space-y-8 mb-8 md:mb-10 relative">
-               {/* Vertical connection line could go here */}
-              {METHODOLOGY.map((item, idx) => (
-                <div key={idx} className="flex gap-3 md:gap-4 group relative">
-                  <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 bg-blue-50 rounded-xl flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300 z-10">
-                    <item.icon className="w-5 h-5 md:w-6 md:h-6 text-blue-600 group-hover:text-white transition-colors" />
-                  </div>
-                  <div>
-                    <h3 className="text-base md:text-lg font-bold text-slate-900 mb-1">{item.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed max-w-md">{item.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+              <div className="space-y-6 md:space-y-8 mb-8 md:mb-10 relative">
+                {METHODOLOGY.map((item, idx) => (
+                  <ScrollReveal key={idx} direction="up" delay={idx * 100}>
+                    <div className="flex gap-3 md:gap-4 group relative">
+                      <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 bg-blue-50 rounded-xl flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300 z-10">
+                        <item.icon className="w-5 h-5 md:w-6 md:h-6 text-blue-600 group-hover:text-white transition-colors" />
+                      </div>
+                      <div>
+                        <h3 className="text-base md:text-lg font-bold text-slate-900 mb-1">{item.title}</h3>
+                        <p className="text-slate-500 text-sm leading-relaxed max-w-md">{item.description}</p>
+                      </div>
+                    </div>
+                  </ScrollReveal>
+                ))}
+              </div>
 
-            {/* UPDATED LINK to /services */}
-            <button
-              onClick={() => {
-                onNavigate('services');
-                window.scrollTo(0, 0);
-              }}
-              className="inline-flex items-center font-semibold text-blue-600 hover:text-blue-700 transition-colors group"
-            >
-              View All Services <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
+              <button
+                onClick={() => {
+                  onNavigate('services');
+                  window.scrollTo(0, 0);
+                }}
+                className="inline-flex items-center font-semibold text-blue-600 hover:text-blue-700 transition-colors group"
+              >
+                View All Services <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </ScrollReveal>
           </div>
 
           {/* Right Visual (Floating Stats Cards) */}
@@ -584,371 +593,391 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
             {/* Decorative Orbs - Hidden on mobile */}
             <div className="hidden md:block absolute top-1/4 left-1/4 w-32 h-32 bg-blue-400/20 rounded-full blur-3xl animate-pulse-slow"></div>
-            <div className="hidden md:block absolute bottom-1/4 right-1/4 w-40 h-40 bg-purple-400/20 rounded-full blur-3xl animate-pulse-slow" style={{animationDelay: '1s'}}></div>
+            <div className="hidden md:block absolute bottom-1/4 right-1/4 w-40 h-40 bg-purple-400/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
 
             <div className="flex gap-4 md:gap-6 lg:gap-8 w-full max-w-xs md:max-w-md lg:max-w-lg relative z-10 p-2 md:p-4">
-                {/* Column 1 */}
-                <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 w-1/2">
-                    {/* Card 1: 4+ Years Experience */}
-                    <div className="bg-white p-3 md:p-4 lg:p-6 rounded-2xl md:rounded-3xl shadow-xl shadow-slate-200/60 border border-slate-100 transform transition-transform hover:scale-105">
-                        <div className="w-8 h-8 md:w-10 md:h-10 bg-blue-50 rounded-full flex items-center justify-center mb-3 md:mb-4">
-                            <TrendingUp className="w-4 h-4 md:w-5 md:h-5 text-blue-600" />
-                        </div>
-                        <div className="text-2xl md:text-3xl font-bold text-slate-900 mb-1">4+</div>
-                        <div className="text-xs md:text-sm font-medium text-slate-500">Years Experience</div>
-                    </div>
-
-                    {/* Card 3: +80% Conversion Uplift */}
-                    <div className="bg-white p-3 md:p-4 lg:p-6 rounded-2xl md:rounded-3xl shadow-xl shadow-slate-200/60 border border-slate-100 transform transition-transform hover:scale-105 relative">
-                         {/* Sparkle Decoration - Hidden on mobile */}
-                         <HandSparkle className="hidden md:block absolute -top-4 -right-4 w-6 h-6 md:w-8 md:h-8 text-purple-400" />
-                         <div className="w-8 h-8 md:w-10 md:h-10 bg-purple-50 rounded-full flex items-center justify-center mb-3 md:mb-4">
-                            <Zap className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
-                        </div>
-                         <div className="text-2xl md:text-3xl font-bold text-slate-900 mb-1">+80%</div>
-                         <div className="text-xs md:text-sm font-medium text-slate-500">Conversion Uplift</div>
-                    </div>
+              {/* Column 1 */}
+              <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 w-1/2">
+                {/* Card 1: 4+ Years Experience */}
+                <div className="bg-white p-3 md:p-4 lg:p-6 rounded-2xl md:rounded-3xl shadow-xl shadow-slate-200/60 border border-slate-100 transform transition-transform hover:scale-105">
+                  <div className="w-8 h-8 md:w-10 md:h-10 bg-blue-50 rounded-full flex items-center justify-center mb-3 md:mb-4">
+                    <TrendingUp className="w-4 h-4 md:w-5 md:h-5 text-blue-600" />
+                  </div>
+                  <div className="text-2xl md:text-3xl font-bold text-slate-900 mb-1">4+</div>
+                  <div className="text-xs md:text-sm font-medium text-slate-500">Years Experience</div>
                 </div>
 
-                {/* Column 2 (Offset) */}
-                <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 w-1/2 mt-6 md:mt-8 lg:mt-12">
-                    {/* Card 2: +70% Organic Traffic Growth */}
-                    <div className="bg-white p-3 md:p-4 lg:p-6 rounded-2xl md:rounded-3xl shadow-xl shadow-slate-200/60 border border-slate-100 transform transition-transform hover:scale-105">
-                        <div className="w-8 h-8 md:w-10 md:h-10 bg-green-50 rounded-full flex items-center justify-center mb-3 md:mb-4">
-                            <BarChart2 className="w-4 h-4 md:w-5 md:h-5 text-green-600" />
-                        </div>
-                        <div className="text-2xl md:text-3xl font-bold text-slate-900 mb-1">+70%</div>
-                        <div className="text-xs md:text-sm font-medium text-slate-500">Organic Traffic Growth</div>
-                    </div>
-
-                    {/* Card 4: 1000+ SEO Audits Delivered */}
-                    <div className="bg-white p-3 md:p-4 lg:p-6 rounded-2xl md:rounded-3xl shadow-xl shadow-slate-200/60 border border-slate-100 transform transition-transform hover:scale-105">
-                         <div className="w-8 h-8 md:w-10 md:h-10 bg-amber-50 rounded-full flex items-center justify-center mb-3 md:mb-4">
-                            <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-amber-600" />
-                        </div>
-                         <div className="text-2xl md:text-3xl font-bold text-slate-900 mb-1">1000+</div>
-                         <div className="text-xs md:text-sm font-medium text-slate-500">SEO Audits Delivered</div>
-                    </div>
+                {/* Card 3: +80% Conversion Uplift */}
+                <div className="bg-white p-3 md:p-4 lg:p-6 rounded-2xl md:rounded-3xl shadow-xl shadow-slate-200/60 border border-slate-100 transform transition-transform hover:scale-105 relative">
+                  {/* Sparkle Decoration - Hidden on mobile */}
+                  <HandSparkle className="hidden md:block absolute -top-4 -right-4 w-6 h-6 md:w-8 md:h-8 text-purple-400" />
+                  <div className="w-8 h-8 md:w-10 md:h-10 bg-purple-50 rounded-full flex items-center justify-center mb-3 md:mb-4">
+                    <Zap className="w-4 h-4 md:w-5 md:h-5 text-purple-600" />
+                  </div>
+                  <div className="text-2xl md:text-3xl font-bold text-slate-900 mb-1">+80%</div>
+                  <div className="text-xs md:text-sm font-medium text-slate-500">Conversion Uplift</div>
                 </div>
+              </div>
+
+              {/* Column 2 (Offset) */}
+              <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 w-1/2 mt-6 md:mt-8 lg:mt-12">
+                {/* Card 2: +70% Organic Traffic Growth */}
+                <div className="bg-white p-3 md:p-4 lg:p-6 rounded-2xl md:rounded-3xl shadow-xl shadow-slate-200/60 border border-slate-100 transform transition-transform hover:scale-105">
+                  <div className="w-8 h-8 md:w-10 md:h-10 bg-green-50 rounded-full flex items-center justify-center mb-3 md:mb-4">
+                    <BarChart2 className="w-4 h-4 md:w-5 md:h-5 text-green-600" />
+                  </div>
+                  <div className="text-2xl md:text-3xl font-bold text-slate-900 mb-1">+70%</div>
+                  <div className="text-xs md:text-sm font-medium text-slate-500">Organic Traffic Growth</div>
+                </div>
+
+                {/* Card 4: 1000+ SEO Audits Delivered */}
+                <div className="bg-white p-3 md:p-4 lg:p-6 rounded-2xl md:rounded-3xl shadow-xl shadow-slate-200/60 border border-slate-100 transform transition-transform hover:scale-105">
+                  <div className="w-8 h-8 md:w-10 md:h-10 bg-amber-50 rounded-full flex items-center justify-center mb-3 md:mb-4">
+                    <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-amber-600" />
+                  </div>
+                  <div className="text-2xl md:text-3xl font-bold text-slate-900 mb-1">1000+</div>
+                  <div className="text-xs md:text-sm font-medium text-slate-500">SEO Audits Delivered</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </Section>
+      </Section >
 
       {/* Business Growth Section */}
-      <Section className="text-center relative">
-        <div className="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-xs font-bold uppercase tracking-wide mb-6">
-          Statistic
-        </div>
-        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-20">
-          See Your <br /> <span className="text-blue-600 relative inline-block">
-             Business Growth
-             {/* Updated Arrow to point towards the card */}
-             <HandArrowCurved className="absolute -bottom-10 -right-20 w-24 h-24 text-blue-300 hidden md:block rotate-90" />
-          </span>
-        </h2>
+      < Section className="text-center relative" >
+        <ScrollReveal direction="up">
+          <div className="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-xs font-bold uppercase tracking-wide mb-6">
+            Statistic
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-20">
+            See Your <br /> <span className="text-blue-600 relative inline-block">
+              Business Growth
+              {/* Updated Arrow to point towards the card */}
+              <HandArrowCurved className="absolute -bottom-10 -right-20 w-24 h-24 text-blue-300 hidden md:block rotate-90" />
+            </span>
+          </h2>
+        </ScrollReveal>
 
         <div className="max-w-4xl mx-auto relative">
-           {/* Center Big Card */}
-           <div className="relative z-10 bg-white rounded-[2.5rem] p-4 shadow-xl shadow-blue-900/5 border border-slate-100 mx-auto max-w-md transform hover:-translate-y-2 transition-transform duration-500">
+          {/* Center Big Card */}
+          <ScrollReveal direction="scale" delay={200}>
+            <div className="relative z-10 bg-white rounded-[2.5rem] p-4 shadow-xl shadow-blue-900/5 border border-slate-100 mx-auto max-w-md transform hover:-translate-y-2 transition-transform duration-500">
               <div className="bg-slate-50 rounded-[2rem] p-8 relative">
-                 <HandCircle className="absolute inset-0 w-full h-full text-blue-200 opacity-50 scale-110" />
-                 <div className="text-6xl font-bold text-blue-600 mb-2 relative z-10">↑98%</div>
-                 <div className="text-sm font-medium text-slate-500 uppercase tracking-wide relative z-10">Increments in business conversions</div>
+                <HandCircle className="absolute inset-0 w-full h-full text-blue-200 opacity-50 scale-110" />
+                <div className="text-6xl font-bold text-blue-600 mb-2 relative z-10">↑98%</div>
+                <div className="text-sm font-medium text-slate-500 uppercase tracking-wide relative z-10">Increments in business conversions</div>
               </div>
-           </div>
+            </div>
+          </ScrollReveal>
 
-           {/* Left Stat */}
-           <div className="md:absolute md:top-1/2 md:-translate-y-1/2 md:left-0 mt-8 md:mt-0">
-             <div className="bg-white rounded-[2rem] p-6 shadow-lg border border-slate-50 w-full md:w-64">
-                <div className="text-3xl font-bold text-slate-900 mb-1">$200+</div>
-                <div className="text-xs text-slate-500">Our users average spending</div>
-             </div>
-           </div>
+          {/* Left Stat */}
+          <ScrollReveal direction="right" delay={400} className="md:absolute md:top-1/2 md:-translate-y-1/2 md:left-0 mt-8 md:mt-0">
+            <div className="bg-white rounded-[2rem] p-6 shadow-lg border border-slate-50 w-full md:w-64">
+              <div className="text-3xl font-bold text-slate-900 mb-1">$200+</div>
+              <div className="text-xs text-slate-500">Our users average spending</div>
+            </div>
+          </ScrollReveal>
 
-           {/* Right CTA */}
-           <div className="md:absolute md:top-1/2 md:-translate-y-1/2 md:right-0 mt-8 md:mt-0">
-             <div className="bg-blue-600 rounded-[2rem] p-6 shadow-lg shadow-blue-500/30 text-white w-full md:w-64 cursor-pointer hover:bg-blue-700 transition-colors">
-                <div className="flex items-center justify-between">
-                  <div className="text-3xl font-bold">↑50%</div>
-                  <ArrowUpRight className="opacity-80" />
-                </div>
-                <div className="text-xs text-blue-100 mt-1 text-left">Effective in growth in business</div>
-             </div>
-           </div>
+          {/* Right CTA */}
+          <ScrollReveal direction="left" delay={400} className="md:absolute md:top-1/2 md:-translate-y-1/2 md:right-0 mt-8 md:mt-0">
+            <div className="bg-blue-600 rounded-[2rem] p-6 shadow-lg shadow-blue-500/30 text-white w-full md:w-64 cursor-pointer hover:bg-blue-700 transition-colors">
+              <div className="flex items-center justify-between">
+                <div className="text-3xl font-bold">↑50%</div>
+                <ArrowUpRight className="opacity-80" />
+              </div>
+              <div className="text-xs text-blue-100 mt-1 text-left">Effective in growth in business</div>
+            </div>
+          </ScrollReveal>
         </div>
-      </Section>
+      </Section >
 
       {/* Featured Case Studies Section */}
-      <Section id="work" light>
-        <div className="mb-16">
-          <div>
-             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Featured Case Studies</h2>
-             <p className="text-lg text-slate-500">Real results from real campaigns.</p>
+      < Section id="work" light >
+        <ScrollReveal direction="up">
+          <div className="mb-16">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Featured Case Studies</h2>
+              <p className="text-lg text-slate-500">Real results from real campaigns.</p>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         <div className="grid md:grid-cols-3 gap-8">
-            {CASE_STUDIES.map((study, index) => (
-                <div key={index} onClick={() => onNavigate(`casestudy${index + 1}`)} className="flex flex-col bg-white rounded-2xl border border-slate-200 p-8 hover:shadow-xl hover:border-blue-100 transition-all duration-300 group cursor-pointer">
-                    <div className="mb-6">
-                        <span className="inline-block px-3 py-1 rounded-full bg-blue-50 text-xs font-bold text-blue-600 uppercase tracking-wide mb-4">
-                        {study.category}
-                        </span>
-                        <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
-                        {study.title}
-                        </h3>
-                        <p className="text-slate-500 text-sm leading-relaxed">
-                        {study.description}
-                        </p>
-                    </div>
-                    
-                    <div className="mt-auto pt-6 border-t border-slate-100 grid grid-cols-2 gap-4">
-                    {study.metrics.map((metric, idx) => (
-                        <div key={idx}>
-                        <div className="text-2xl font-bold text-slate-900 mb-1">{metric.value}</div>
-                        <div className="text-xs font-medium text-slate-400 uppercase tracking-wide">{metric.label}</div>
-                        </div>
-                    ))}
-                    </div>
+          {CASE_STUDIES.map((study, index) => (
+            <ScrollReveal key={index} direction="up" delay={index * 150}>
+              <div onClick={() => onNavigate(`casestudy${index + 1}`)} className="flex flex-col bg-white rounded-2xl border border-slate-200 p-8 hover:shadow-xl hover:border-blue-100 transition-all duration-300 group cursor-pointer h-full">
+                <div className="mb-6">
+                  <span className="inline-block px-3 py-1 rounded-full bg-blue-50 text-xs font-bold text-blue-600 uppercase tracking-wide mb-4">
+                    {study.category}
+                  </span>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
+                    {study.title}
+                  </h3>
+                  <p className="text-slate-500 text-sm leading-relaxed">
+                    {study.description}
+                  </p>
                 </div>
-            ))}
+
+                <div className="mt-auto pt-6 border-t border-slate-100 grid grid-cols-2 gap-4">
+                  {study.metrics.map((metric, idx) => (
+                    <div key={idx}>
+                      <div className="text-2xl font-bold text-slate-900 mb-1">{metric.value}</div>
+                      <div className="text-xs font-medium text-slate-400 uppercase tracking-wide">{metric.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+          ))}
         </div>
-      </Section>
+      </Section >
 
       {/* Tech Stack & Tools Section */}
-      <section className="py-24 bg-slate-900 text-white relative overflow-hidden">
+      < section className="py-24 bg-slate-900 text-white relative overflow-hidden" >
         {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] -z-10 opacity-50 pointer-events-none"></div>
+        < div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] -z-10 opacity-50 pointer-events-none" ></div >
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-600/10 rounded-full blur-[100px] -z-10 opacity-50 pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-           <div className="grid lg:grid-cols-2 gap-16 items-center">
-              
-              {/* Left Column: Context */}
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+            {/* Left Column: Context */}
+            <ScrollReveal direction="left">
               <div>
-                 <h2 className="text-3xl md:text-4xl font-bold mb-6">Current Stack <span className="text-blue-500">&</span> Tools</h2>
-                 <p className="text-slate-400 text-lg mb-10 leading-relaxed">
-                   My toolkit combines enterprise-grade platforms with custom automation workflows to deliver faster insights, scalable execution, and measurable growth.
-                 </p>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">Current Stack <span className="text-blue-500">&</span> Tools</h2>
+                <p className="text-slate-400 text-lg mb-10 leading-relaxed">
+                  My toolkit combines enterprise-grade platforms with custom automation workflows to deliver faster insights, scalable execution, and measurable growth.
+                </p>
 
-                 <div className="space-y-6">
-                    {/* Strategy Block */}
-                    <div className="flex gap-5 group">
-                       <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20 group-hover:border-blue-500/50 transition-colors">
-                          <BarChart2 className="text-blue-400 w-6 h-6" />
-                       </div>
-                       <div>
-                          <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">Data-Driven Strategy</h3>
-                          <p className="text-slate-400 text-sm leading-relaxed max-w-sm">Transforming complex analytics into clear, actionable growth plans using performance data, user behavior insights, and search intelligence.</p>
-                       </div>
+                <div className="space-y-6">
+                  {/* Strategy Block */}
+                  <div className="flex gap-5 group">
+                    <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20 group-hover:border-blue-500/50 transition-colors">
+                      <BarChart2 className="text-blue-400 w-6 h-6" />
                     </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">Data-Driven Strategy</h3>
+                      <p className="text-slate-400 text-sm leading-relaxed max-w-sm">Transforming complex analytics into clear, actionable growth plans using performance data, user behavior insights, and search intelligence.</p>
+                    </div>
+                  </div>
 
-                    {/* AI Block */}
-                    <div className="flex gap-5 group">
-                       <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center border border-purple-500/20 group-hover:border-purple-500/50 transition-colors">
-                          <Cpu className="text-purple-400 w-6 h-6" />
-                       </div>
-                       <div>
-                          <h3 className="text-lg font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">AI & Automation Integration</h3>
-                          <p className="text-slate-400 text-sm leading-relaxed max-w-sm">Designing automated SEO workflows with n8n and LLMs to streamline audits, reporting, and content operations at scale.</p>
-                       </div>
+                  {/* AI Block */}
+                  <div className="flex gap-5 group">
+                    <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center border border-purple-500/20 group-hover:border-purple-500/50 transition-colors">
+                      <Cpu className="text-purple-400 w-6 h-6" />
                     </div>
-                 </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">AI & Automation Integration</h3>
+                      <p className="text-slate-400 text-sm leading-relaxed max-w-sm">Designing automated SEO workflows with n8n and LLMs to streamline audits, reporting, and content operations at scale.</p>
+                    </div>
+                  </div>
+                </div>
               </div>
+            </ScrollReveal>
 
-              {/* Right Column: The Stack */}
+            {/* Right Column: The Stack */}
+            <ScrollReveal direction="right">
               <div className="relative">
-                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-3xl blur-xl -z-10"></div>
-                 <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-3xl p-8">
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                       {STACK.map((tool, idx) => (
-                          <div key={idx} className="flex items-center justify-center text-center px-4 py-3 bg-slate-900/80 border border-slate-700 rounded-lg text-slate-300 text-sm font-medium hover:bg-slate-800 hover:border-blue-500/30 hover:text-white hover:shadow-lg hover:shadow-blue-900/20 transition-all duration-300 cursor-default group">
-                             <span className="group-hover:scale-105 transition-transform">{tool}</span>
-                          </div>
-                       ))}
-                    </div>
-                 </div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-3xl blur-xl -z-10"></div>
+                <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-3xl p-8">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    {STACK.map((tool, idx) => (
+                      <div key={idx} className="flex items-center justify-center text-center px-4 py-3 bg-slate-900/80 border border-slate-700 rounded-lg text-slate-300 text-sm font-medium hover:bg-slate-800 hover:border-blue-500/30 hover:text-white hover:shadow-lg hover:shadow-blue-900/20 transition-all duration-300 cursor-default group">
+                        <span className="group-hover:scale-105 transition-transform">{tool}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
+            </ScrollReveal>
 
-           </div>
+          </div>
         </div>
-      </section>
+      </section >
 
       {/* Selected Work Details Section */}
       <Section id="experience" className="bg-slate-50 relative">
         {/* Header */}
-        <div className="max-w-3xl mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 relative inline-block">
-             Projects Statistics
-             <HandUnderline className="absolute -bottom-1 left-0 w-full h-3 text-blue-500 opacity-60" />
-          </h2>
-          <p className="text-xl text-slate-500">Proven results driven by data and strategy.</p>
-        </div>
+        <ScrollReveal direction="up">
+          <div className="max-w-3xl mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 relative inline-block">
+              Projects Statistics
+              <HandUnderline className="absolute -bottom-1 left-0 w-full h-3 text-blue-500 opacity-60" />
+            </h2>
+            <p className="text-xl text-slate-500">Proven results driven by data and strategy.</p>
+          </div>
+        </ScrollReveal>
 
         <div className="space-y-32">
           {WORK_HISTORY.map((job, index) => (
-              <div key={index} className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
-                {/* Left Info */}
-                <div className="flex-1 order-2 lg:order-1">
-                    <div className="inline-flex items-center gap-2 text-blue-600 font-bold uppercase tracking-widest text-sm mb-2">
-                      <span className="w-8 h-[2px] bg-blue-600"></span>
-                      {job.company}
-                    </div>
-                    <h3 className="text-3xl font-bold text-slate-900 mb-4">{job.role}</h3>
-                    <p className="text-slate-500 text-lg leading-relaxed mb-8">{job.description}</p>
-                    
-                    <div className="grid grid-cols-3 gap-6 mb-8 border-y border-slate-200 py-6">
-                      {job.metrics.map((m, i) => (
-                          <div key={i}>
-                            <div className="text-2xl lg:text-3xl font-bold text-slate-900 mb-1">{m.value}</div>
-                            <div className="text-xs font-semibold text-slate-400 uppercase tracking-wide">{m.label}</div>
-                          </div>
-                      ))}
-                    </div>
+            <div key={index} className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+              {/* Left Info */}
+              <ScrollReveal direction={index % 2 === 0 ? "right" : "left"} className="flex-1 order-2 lg:order-1">
+                <div>
+                  <div className="inline-flex items-center gap-2 text-blue-600 font-bold uppercase tracking-widest text-sm mb-2">
+                    <span className="w-8 h-[2px] bg-blue-600"></span>
+                    {job.company}
+                  </div>
+                  <h3 className="text-3xl font-bold text-slate-900 mb-4">{job.role}</h3>
+                  <p className="text-slate-500 text-lg leading-relaxed mb-8">{job.description}</p>
 
-                    <div className="flex flex-wrap gap-2">
-                      {job.tags.map((tag, i) => (
-                          <span key={i} className="px-3 py-1 bg-white border border-slate-200 text-slate-600 rounded-full text-sm font-medium">
-                            {tag}
-                          </span>
-                      ))}
-                    </div>
-                </div>
+                  <div className="grid grid-cols-3 gap-6 mb-8 border-y border-slate-200 py-6">
+                    {job.metrics.map((m, i) => (
+                      <div key={i}>
+                        <div className="text-2xl lg:text-3xl font-bold text-slate-900 mb-1">{m.value}</div>
+                        <div className="text-xs font-semibold text-slate-400 uppercase tracking-wide">{m.label}</div>
+                      </div>
+                    ))}
+                  </div>
 
-                {/* Right Chart */}
-                <div className="flex-1 w-full order-1 lg:order-2">
-                    <div className="bg-white rounded-3xl p-6 lg:p-8 shadow-2xl shadow-slate-200/50 border border-slate-100 relative overflow-hidden">
-                      <div className="flex justify-between items-center mb-8">
-                          <div className="flex items-center gap-2 text-slate-900 font-bold">
-                            <BarChart2 className="w-5 h-5 text-blue-500" />
-                            Performance Visualization
-                          </div>
-                      </div>
-                      <div className="h-[250px] w-full">
-                          <WorkChart 
-                            data={job.chartData} 
-                            type={job.chartType} 
-                            dataKey="value" 
-                            color={index === 0 ? '#3b82f6' : index === 1 ? '#8b5cf6' : '#10b981'} 
-                          />
-                      </div>
-                    </div>
+                  <div className="flex flex-wrap gap-2">
+                    {job.tags.map((tag, i) => (
+                      <span key={i} className="px-3 py-1 bg-white border border-slate-200 text-slate-600 rounded-full text-sm font-medium">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </ScrollReveal>
+
+              {/* Right Chart */}
+              <ScrollReveal direction={index % 2 === 0 ? "left" : "right"} className="flex-1 w-full order-1 lg:order-2">
+                <div className="bg-white rounded-3xl p-6 lg:p-8 shadow-2xl shadow-slate-200/50 border border-slate-100 relative overflow-hidden">
+                  <div className="flex justify-between items-center mb-8">
+                    <div className="flex items-center gap-2 text-slate-900 font-bold">
+                      <BarChart2 className="w-5 h-5 text-blue-500" />
+                      Performance Visualization
+                    </div>
+                  </div>
+                  <div className="h-[250px] w-full">
+                    <WorkChart
+                      data={job.chartData}
+                      type={job.chartType}
+                      dataKey="value"
+                      color={index === 0 ? '#3b82f6' : index === 1 ? '#8b5cf6' : '#10b981'}
+                    />
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
           ))}
         </div>
       </Section>
 
       {/* Client Testimonials Section */}
       <Section className="bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-              Client Testimonials
-            </h2>
-            <p className="text-xl text-slate-500">What clients say about working with me</p>
-          </div>
+        <ScrollReveal direction="up">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+                Client Testimonials
+              </h2>
+              <p className="text-xl text-slate-500">What clients say about working with me</p>
+            </div>
 
-          <TestimonialsCarousel />
-        </div>
+            <TestimonialsCarousel />
+          </div>
+        </ScrollReveal>
       </Section>
 
       {/* Contact Section */}
       <Section id="contact" className="bg-white pt-0 md:pt-0">
-         <div className="bg-slate-900 rounded-2xl md:rounded-[2.5rem] p-6 md:p-8 lg:p-16 overflow-hidden relative shadow-2xl shadow-slate-200">
+        <ScrollReveal direction="up">
+          <div className="bg-slate-900 rounded-2xl md:rounded-[2.5rem] p-6 md:p-8 lg:p-16 overflow-hidden relative shadow-2xl shadow-slate-200">
             {/* Background decoration - Hidden on mobile to prevent layout issues */}
             <div className="hidden md:block absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
             <div className="hidden md:block absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/3 pointer-events-none"></div>
 
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-24">
 
-               {/* Text Side */}
-               <div className="flex flex-col justify-center relative order-2 lg:order-1">
-                  <HandArrowCurved className="hidden xl:block absolute -top-12 left-10 w-24 h-24 text-slate-600 opacity-30 rotate-180" />
+              {/* Text Side */}
+              <div className="flex flex-col justify-center relative order-2 lg:order-1">
+                <HandArrowCurved className="hidden xl:block absolute -top-12 left-10 w-24 h-24 text-slate-600 opacity-30 rotate-180" />
 
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-4 md:mb-6 leading-tight">
-                    Ready to scale <br/> your <span className="text-blue-500">organic growth?</span>
-                  </h2>
-                  <p className="text-slate-400 text-base md:text-lg mb-6 md:mb-10 leading-relaxed">
-                    I'm currently accepting new projects. Whether you need a technical audit, a content roadmap, or full-stack SEO management, let's talk numbers.
-                  </p>
+                <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-4 md:mb-6 leading-tight">
+                  Ready to scale <br /> your <span className="text-blue-500">organic growth?</span>
+                </h2>
+                <p className="text-slate-400 text-base md:text-lg mb-6 md:mb-10 leading-relaxed">
+                  I'm currently accepting new projects. Whether you need a technical audit, a content roadmap, or full-stack SEO management, let's talk numbers.
+                </p>
 
-                  <div className="space-y-6 md:space-y-8">
-                     <div className="flex items-start gap-3 md:gap-4">
-                        <div className="w-10 h-10 md:w-12 md:h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                           <Mail className="w-5 h-5 md:w-6 md:h-6 text-blue-400" />
-                        </div>
-                        <div className="relative min-w-0 flex-1">
-                           <HandArrowCurved className="hidden xl:block absolute -left-16 top-2 w-12 h-12 text-blue-500 opacity-60 scale-x-[-1]" />
-                           <div className="text-xs md:text-sm text-slate-500 font-medium mb-1">Email Me</div>
-                           <a href="mailto:shravan.chauhan0009@gmail.com" className="text-lg md:text-xl font-bold text-white hover:text-blue-400 transition-colors break-words">shravan.chauhan0009@gmail.com</a>
-                        </div>
-                     </div>
-
-                     <div className="flex items-start gap-3 md:gap-4">
-                        <div className="w-10 h-10 md:w-12 md:h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                           <MapPin className="w-5 h-5 md:w-6 md:h-6 text-purple-400" />
-                        </div>
-                        <div className="min-w-0 flex-1">
-                           <div className="text-xs md:text-sm text-slate-500 font-medium mb-1">Based In</div>
-                           <div className="text-lg md:text-xl font-bold text-white">Ahmedabad, India</div>
-                        </div>
-                     </div>
-
-                     <div className="flex items-start gap-3 md:gap-4">
-                        <div className="w-10 h-10 md:w-12 md:h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                           <svg className="w-5 h-5 md:w-6 md:h-6 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
-                             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                           </svg>
-                        </div>
-                        <div className="min-w-0 flex-1">
-                           <div className="text-xs md:text-sm text-slate-500 font-medium mb-1">Connect</div>
-                           <a href="https://www.linkedin.com/in/shravan-chauhan-3786a515a/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-bold text-white hover:text-blue-400 transition-colors break-words">LinkedIn Profile</a>
-                        </div>
-                     </div>
+                <div className="space-y-6 md:space-y-8">
+                  <div className="flex items-start gap-3 md:gap-4">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Mail className="w-5 h-5 md:w-6 md:h-6 text-blue-400" />
+                    </div>
+                    <div className="relative min-w-0 flex-1">
+                      <HandArrowCurved className="hidden xl:block absolute -left-16 top-2 w-12 h-12 text-blue-500 opacity-60 scale-x-[-1]" />
+                      <div className="text-xs md:text-sm text-slate-500 font-medium mb-1">Email Me</div>
+                      <a href="mailto:shravan.chauhan0009@gmail.com" className="text-lg md:text-xl font-bold text-white hover:text-blue-400 transition-colors break-words">shravan.chauhan0009@gmail.com</a>
+                    </div>
                   </div>
-               </div>
 
-               {/* Form Side */}
-               <div className="bg-white p-6 md:p-8 rounded-2xl lg:rounded-3xl shadow-xl order-1 lg:order-2">
-                  <form action="https://api.web3forms.com/submit" method="POST" className="space-y-4 md:space-y-5">
-                     <input type="hidden" name="access_key" value="c75a45aa-5064-4e9e-977c-4fc6c5f854f8" />
-                     <input type="hidden" name="subject" value="New Contact Form Submission - Rank&Tech" />
-                     <input type="hidden" name="from_name" value="Rank&Tech Contact Form" />
+                  <div className="flex items-start gap-3 md:gap-4">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-5 h-5 md:w-6 md:h-6 text-purple-400" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="text-xs md:text-sm text-slate-500 font-medium mb-1">Based In</div>
+                      <div className="text-lg md:text-xl font-bold text-white">Ahmedabad, India</div>
+                    </div>
+                  </div>
 
-                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
-                        <div className="space-y-2">
-                           <label className="text-sm font-semibold text-slate-900">Name</label>
-                           <input type="text" name="name" placeholder="shravan chauhan" required className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400" />
-                        </div>
-                        <div className="space-y-2">
-                           <label className="text-sm font-semibold text-slate-900">Company</label>
-                           <input type="text" name="company" placeholder="Acme Inc." className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400" />
-                        </div>
-                     </div>
+                  <div className="flex items-start gap-3 md:gap-4">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 md:w-6 md:h-6 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                      </svg>
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="text-xs md:text-sm text-slate-500 font-medium mb-1">Connect</div>
+                      <a href="https://www.linkedin.com/in/shravan-chauhan-3786a515a/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-bold text-white hover:text-blue-400 transition-colors break-words">LinkedIn Profile</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-                     <div className="space-y-2">
-                        <label className="text-sm font-semibold text-slate-900">Email Address</label>
-                        <input type="email" name="email" placeholder="abc@company.com" required className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400" />
-                     </div>
+              {/* Form Side */}
+              <div className="bg-white p-6 md:p-8 rounded-2xl lg:rounded-3xl shadow-xl order-1 lg:order-2">
+                <form action="https://api.web3forms.com/submit" method="POST" className="space-y-4 md:space-y-5">
+                  <input type="hidden" name="access_key" value="c75a45aa-5064-4e9e-977c-4fc6c5f854f8" />
+                  <input type="hidden" name="subject" value="New Contact Form Submission - Rank&Tech" />
+                  <input type="hidden" name="from_name" value="Rank&Tech Contact Form" />
 
-                     <div className="space-y-2">
-                        <label className="text-sm font-semibold text-slate-900">Project Details</label>
-                        <textarea name="message" rows={4} placeholder="Tell me about your goals..." required className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400 resize-none"></textarea>
-                     </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+                    <div className="space-y-2">
+                      <label className="text-sm font-semibold text-slate-900">Name</label>
+                      <input type="text" name="name" placeholder="shravan chauhan" required className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400" />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-semibold text-slate-900">Company</label>
+                      <input type="text" name="company" placeholder="Acme Inc." className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400" />
+                    </div>
+                  </div>
 
-                     <button type="submit" className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg shadow-blue-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed">
-                        Send Message
-                     </button>
-                  </form>
-               </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-semibold text-slate-900">Email Address</label>
+                    <input type="email" name="email" placeholder="abc@company.com" required className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400" />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-sm font-semibold text-slate-900">Project Details</label>
+                    <textarea name="message" rows={4} placeholder="Tell me about your goals..." required className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all placeholder:text-slate-400 resize-none"></textarea>
+                  </div>
+
+                  <button type="submit" className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg shadow-blue-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed">
+                    Send Message
+                  </button>
+                </form>
+              </div>
 
             </div>
-         </div>
+          </div>
+        </ScrollReveal>
       </Section>
 
-      
+
     </>
   );
 };

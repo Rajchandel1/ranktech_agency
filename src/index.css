@@ -98,3 +98,55 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Infinite Logo Scroll Animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+.pause-animation:hover {
+  animation-play-state: paused;
+}
+
+/* Scroll Reveal Base */
+.reveal-hidden {
+  opacity: 0;
+  transition: all 1s cubic-bezier(0.17, 0.55, 0.55, 1);
+  will-change: transform, opacity;
+}
+
+.reveal-visible {
+  opacity: 1 !important;
+  transform: translate(0, 0) !important;
+}
+
+/* Directional Reveals */
+.reveal-up {
+  transform: translateY(40px);
+}
+
+.reveal-down {
+  transform: translateY(-40px);
+}
+
+.reveal-left {
+  transform: translateX(40px);
+}
+
+.reveal-right {
+  transform: translateX(-40px);
+}
+
+.reveal-scale {
+  transform: scale(0.95);
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}

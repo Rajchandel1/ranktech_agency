@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import {
-  ArrowLeft, ExternalLink, Calendar, User, Building, Wrench,
+  ArrowLeft, ExternalLink, Calendar, User, Building,
   TrendingUp, Target, Lightbulb, CheckCircle2, ArrowRight
 } from 'lucide-react';
 import Section from '../components/Section';
 import { HandUnderline, HandSparkle, HandSquiggle } from '../components/Decorations';
+import ScrollReveal from '../components/ScrollReveal';
 
 interface CaseStudyDetailProps {
   onNavigate: (page: string) => void;
@@ -30,10 +31,10 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ onNavigate }) => {
     execution: "Content: Published 'Comparison Guides' (e.g., Native vs. Cross-Platform for IoT) to capture decision-stage traffic. Internal Linking: Built 'Hub & Spoke' model where 'Mobile App' parent page linked down to specific 'BLE/IoT' child pages, passing authority. Conversion: Swapped generic 'Contact Us' forms for 'Request a Technical Consultation' forms, increasing perceived value.",
     results: "Lead Quality: +65% increase in form submissions for 'IoT/BLE' services. Rankings: Hit Top 3 for 'Bluetooth App Development Company' (High commercial intent). User Behavior: Average Time on Page increased from 1:15 to 2:45 due to better content structure.",
     images: [
-      "https://picsum.photos/800/600?random=20",
-      "https://picsum.photos/800/600?random=21",
-      "https://picsum.photos/800/600?random=22",
-      "https://picsum.photos/800/600?random=23"
+      "src/assets/blupixel 1.jpeg",
+      "src/assets/blupixel 2.jpeg",
+      "src/assets/blupixel 3.jpeg",
+      "src/assets/blupixel 4.jpeg",
     ],
     metrics: [
       { label: "Form Submissions", value: "+65%", trend: "up" },
@@ -114,22 +115,24 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ onNavigate }) => {
           </button>
 
           <div className="text-center">
-            <span className="inline-block px-4 py-2 rounded-full bg-blue-50 text-sm font-bold text-blue-600 uppercase tracking-wide mb-6">
-              {study.category}
-            </span>
+            <ScrollReveal direction="up">
+              <span className="inline-block px-4 py-2 rounded-full bg-blue-50 text-sm font-bold text-blue-600 uppercase tracking-wide mb-6">
+                {study.category}
+              </span>
 
-            <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-              {study.title}
-              <HandUnderline className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-3/4 h-4 text-blue-400 opacity-80" delay="0.8s" />
-            </h1>
+              <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight relative">
+                {study.title}
+                <HandUnderline className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-3/4 h-4 text-blue-400 opacity-80" delay="0.8s" />
+              </h1>
 
-            <p className="text-xl text-slate-500 max-w-3xl mx-auto leading-relaxed mb-8">
-              A strategic pivot from generic traffic to high-value technical leads through targeted SEO and content optimization.
-            </p>
+              <p className="text-xl text-slate-500 max-w-3xl mx-auto leading-relaxed mb-8">
+                A strategic pivot from generic traffic to high-value technical leads through targeted SEO and content optimization.
+              </p>
 
-            <a href={study.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors group">
-              Visit Website <ExternalLink className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
+              <a href={study.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors group">
+                Visit Website <ExternalLink className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -142,13 +145,15 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ onNavigate }) => {
           {projectDetails.map((detail, idx) => {
             const Icon = detail.icon;
             return (
-              <div key={idx} className="bg-white rounded-2xl p-6 border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group animate-fade-in-up text-center" style={{ animationDelay: `${idx * 0.1}s` }}>
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-${detail.color}-50 group-hover:bg-${detail.color}-100 transition-colors mx-auto`}>
-                  <Icon className={`w-6 h-6 text-${detail.color}-600`} />
+              <ScrollReveal key={idx} direction="up" delay={idx * 100}>
+                <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group text-center h-full">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-${detail.color}-50 group-hover:bg-${detail.color}-100 transition-colors mx-auto`}>
+                    <Icon className={`w-6 h-6 text-${detail.color}-600`} />
+                  </div>
+                  <div className="text-sm font-medium text-slate-500 uppercase tracking-wide mb-1">{detail.label}</div>
+                  <div className="text-lg font-bold text-slate-900">{detail.value}</div>
                 </div>
-                <div className="text-sm font-medium text-slate-500 uppercase tracking-wide mb-1">{detail.label}</div>
-                <div className="text-lg font-bold text-slate-900">{detail.value}</div>
-              </div>
+              </ScrollReveal>
             )
           })}
         </div>
@@ -156,32 +161,36 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ onNavigate }) => {
 
       {/* Approach Section */}
       <Section className="bg-slate-50">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Project Approach</h2>
-          <p className="text-xl text-slate-500">How we transformed generic traffic into qualified leads</p>
-        </div>
+        <ScrollReveal direction="up">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Project Approach</h2>
+            <p className="text-xl text-slate-500">How we transformed generic traffic into qualified leads</p>
+          </div>
+        </ScrollReveal>
 
         <div className="space-y-12">
           {approach.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div key={idx} className="bg-white rounded-2xl p-8 border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group animate-fade-in-up" style={{ animationDelay: `${idx * 0.1}s` }}>
-                <div className="flex items-center gap-4 mb-6">
-                  <div className={`w-14 h-14 rounded-xl flex items-center justify-center bg-${item.color}-50 group-hover:bg-${item.color}-100 transition-colors`}>
-                    <Icon className={`w-7 h-7 text-${item.color}-600`} />
+              <ScrollReveal key={idx} direction="up" delay={idx * 100}>
+                <div className="bg-white rounded-2xl p-8 border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className={`w-14 h-14 rounded-xl flex items-center justify-center bg-${item.color}-50 group-hover:bg-${item.color}-100 transition-colors`}>
+                      <Icon className={`w-7 h-7 text-${item.color}-600`} />
+                    </div>
+                    <h3 className="text-2xl font-bold text-slate-900">{item.title}</h3>
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900">{item.title}</h3>
+                  <p className="text-slate-600 leading-relaxed mb-4">
+                    {item.description}
+                  </p>
+                  {item.challenge && (
+                    <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                      <p className="text-red-800 font-medium mb-1">The Challenge:</p>
+                      <p className="text-red-700">{item.challenge}</p>
+                    </div>
+                  )}
                 </div>
-                <p className="text-slate-600 leading-relaxed mb-4">
-                  {item.description}
-                </p>
-                {item.challenge && (
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                    <p className="text-red-800 font-medium mb-1">The Challenge:</p>
-                    <p className="text-red-700">{item.challenge}</p>
-                  </div>
-                )}
-              </div>
+              </ScrollReveal>
             )
           })}
         </div>
@@ -189,62 +198,74 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ onNavigate }) => {
 
       {/* Tools Section */}
       <Section className="relative">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Tools & Technologies</h2>
-          <p className="text-xl text-slate-500">The technical toolkit that powered this project</p>
-        </div>
+        <ScrollReveal direction="up">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Tools & Technologies</h2>
+            <p className="text-xl text-slate-500">The technical toolkit that powered this project</p>
+          </div>
+        </ScrollReveal>
 
         <div className="flex flex-wrap justify-center gap-4 mb-16">
           {study.tools.map((tool, idx) => (
-            <span key={idx} className="px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-full text-sm font-medium hover:bg-slate-50 hover:border-slate-300 transition-colors animate-fade-in-up" style={{ animationDelay: `${idx * 0.1}s` }}>
-              {tool}
-            </span>
+            <ScrollReveal key={idx} direction="scale" delay={idx * 50}>
+              <span className="px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-full text-sm font-medium hover:bg-slate-50 hover:border-slate-300 transition-colors">
+                {tool}
+              </span>
+            </ScrollReveal>
           ))}
         </div>
       </Section>
 
       {/* Results Section */}
       <Section className="bg-slate-50">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Measurable Results</h2>
-          <p className="text-xl text-slate-500">The impact of our solution-based SEO strategy</p>
-        </div>
-
-        <div className="max-w-4xl mx-auto mb-12">
-          <div className="bg-white rounded-2xl p-8 border border-slate-100 shadow-lg">
-            <p className="text-slate-600 leading-relaxed text-lg">
-              {study.results}
-            </p>
+        <ScrollReveal direction="up">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Measurable Results</h2>
+            <p className="text-xl text-slate-500">The impact of our solution-based SEO strategy</p>
           </div>
-        </div>
+        </ScrollReveal>
+
+        <ScrollReveal direction="up" delay={200}>
+          <div className="max-w-4xl mx-auto mb-12">
+            <div className="bg-white rounded-2xl p-8 border border-slate-100 shadow-lg text-center">
+              <p className="text-slate-600 leading-relaxed text-lg">
+                {study.results}
+              </p>
+            </div>
+          </div>
+        </ScrollReveal>
 
         <div className="grid md:grid-cols-3 gap-8">
           {study.metrics.map((metric, idx) => (
-            <div key={idx} className="bg-white rounded-2xl p-8 border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group animate-fade-in-up text-center" style={{ animationDelay: `${idx * 0.1}s` }}>
-              <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:bg-green-100 transition-colors">
-                <TrendingUp className="w-8 h-8 text-green-600" />
+            <ScrollReveal key={idx} direction="up" delay={idx * 150 + 400}>
+              <div className="bg-white rounded-2xl p-8 border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group text-center h-full">
+                <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:bg-green-100 transition-colors">
+                  <TrendingUp className="w-8 h-8 text-green-600" />
+                </div>
+                <div className="text-4xl font-bold text-slate-900 mb-2">{metric.value}</div>
+                <div className="text-sm font-medium text-slate-500 uppercase tracking-wide">{metric.label}</div>
               </div>
-              <div className="text-4xl font-bold text-slate-900 mb-2">{metric.value}</div>
-              <div className="text-sm font-medium text-slate-500 uppercase tracking-wide">{metric.label}</div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </Section>
 
       {/* Project Gallery */}
       <Section className="relative">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Project Gallery</h2>
-          <p className="text-xl text-slate-500">Visual insights into the project execution</p>
-        </div>
+        <ScrollReveal direction="up">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Project Gallery</h2>
+            <p className="text-xl text-slate-500">Visual insights into the project execution</p>
+          </div>
+        </ScrollReveal>
 
         <div className="grid md:grid-cols-2 gap-8">
           {study.images.map((img, idx) => (
-            <div key={idx} className="group animate-fade-in-up" style={{ animationDelay: `${idx * 0.1}s` }}>
+            <ScrollReveal key={idx} direction="up" delay={idx * 100}>
               <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-1">
                 <img src={img} alt={`Project image ${idx + 1}`} className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </Section>
@@ -255,19 +276,21 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ onNavigate }) => {
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
 
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Ready to Achieve Similar Results?</h2>
-          <p className="text-slate-300 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
-            Let's discuss how data-driven SEO strategies can transform your organic growth and business outcomes.
-          </p>
-          <button
-            onClick={() => onNavigate('home')}
-            className="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-500 hover:scale-105 transition-all shadow-lg shadow-blue-900/50"
-          >
-            Start Your Project
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </button>
-        </div>
+        <ScrollReveal direction="up">
+          <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Ready to Achieve Similar Results?</h2>
+            <p className="text-slate-300 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
+              Let's discuss how data-driven SEO strategies can transform your organic growth and business outcomes.
+            </p>
+            <button
+              onClick={() => onNavigate('home')}
+              className="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-500 hover:scale-105 transition-all shadow-lg shadow-blue-900/50"
+            >
+              Start Your Project
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </button>
+          </div>
+        </ScrollReveal>
       </section>
     </>
   );
