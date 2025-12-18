@@ -485,8 +485,8 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
     {/* 2. Adjust Arrow Position */}
     {/* -left-24: Moves it ~6rem to the left of the button (adjust this to get closer/further) */}
     {/* top-0: Aligns it with the top of the button */}
-    <HandArrowCurved 
-      className="hidden md:block absolute -left-24 -top-20 w-24 h-20 text-slate-800 opacity-60 rotate-50" 
+     <HandArrowCurved 
+      className="hidden md:block absolute -left-24 -top-20 w-24 h-20 text-slate-800 opacity-60 rotate-10" 
       delay="1.2s" 
     />
     

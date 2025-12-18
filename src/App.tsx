@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import About from './pages/About';
-import Services from './pages/Services';
-import CaseStudy1 from './pages/CaseStudy1';
-import CaseStudy2 from './pages/CaseStudy2';
-import CaseStudy3 from './pages/CaseStudy3';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import Home from '../pages/Home';
+import About from '../pages/About';
+import Services from '../pages/Services';
+import CaseStudy1 from '../pages/CaseStudy1';
+import CaseStudy2 from '../pages/CaseStudy2';
+import CaseStudy3 from '../pages/CaseStudy3';
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
