@@ -1,0 +1,276 @@
+import React, { useEffect } from 'react';
+import {
+  ArrowLeft, ExternalLink, Calendar, User, Building, Wrench,
+  TrendingUp, Target, Lightbulb, CheckCircle2, ArrowRight
+} from 'lucide-react';
+import Section from '../components/Section';
+import { HandUnderline, HandSparkle, HandSquiggle } from '../components/Decorations';
+
+interface CaseStudyDetailProps {
+  onNavigate: (page: string) => void;
+}
+
+const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ onNavigate }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const study = {
+    category: "IT Services / Software Development",
+    title: "From Generic Traffic to High-Value Tech Leads",
+    client: "BluePixel Technologies",
+    url: "https://www.bluepixeltech.com/",
+    role: "Senior SEO Executive",
+    industry: "IT Services / Software Development",
+    timeline: "8 Months",
+    tools: ["Ahrefs", "Screaming Frog", "LinkedIn Insights", "ChatGPT (Content Strategy)"],
+    businessContext: "BluePixel is a custom software shop in Ahmedabad. The 'Web Development' keyword market is saturated.",
+    challenge: "Ranking for 'Software Company' brought in spam leads and students, not clients. They had great case studies but hidden in silo, disconnected from service pages.",
+    strategy: "Pivoted from 'Volume SEO' to 'Solution-Based SEO.' Verticalization: Instead of fighting for 'App Developer,' targeted niche technical pain points: 'BLE Beacon App Development' and 'IoT Firmware Integration.' Proof of Competence: Restructured Service Pages to follow 'Problem -> Solution -> Proof' framework. Embedded relevant case study metrics directly into service descriptions to boost E-E-A-T. Technical Audit: Site had heavy JS bloat. Implemented lazy loading for portfolio images to fix LCP issues affecting mobile rankings.",
+    execution: "Content: Published 'Comparison Guides' (e.g., Native vs. Cross-Platform for IoT) to capture decision-stage traffic. Internal Linking: Built 'Hub & Spoke' model where 'Mobile App' parent page linked down to specific 'BLE/IoT' child pages, passing authority. Conversion: Swapped generic 'Contact Us' forms for 'Request a Technical Consultation' forms, increasing perceived value.",
+    results: "Lead Quality: +65% increase in form submissions for 'IoT/BLE' services. Rankings: Hit Top 3 for 'Bluetooth App Development Company' (High commercial intent). User Behavior: Average Time on Page increased from 1:15 to 2:45 due to better content structure.",
+    images: [
+      "https://picsum.photos/800/600?random=20",
+      "https://picsum.photos/800/600?random=21",
+      "https://picsum.photos/800/600?random=22",
+      "https://picsum.photos/800/600?random=23"
+    ],
+    metrics: [
+      { label: "Form Submissions", value: "+65%", trend: "up" },
+      { label: "Rankings", value: "Top 3", trend: "up" },
+      { label: "Time on Page", value: "1:15 → 2:45", trend: "up" }
+    ]
+  };
+
+  const projectDetails = [
+    {
+      label: "Client",
+      value: study.client,
+      icon: Building,
+      color: "blue"
+    },
+    {
+      label: "Role",
+      value: study.role,
+      icon: User,
+      color: "emerald"
+    },
+    {
+      label: "Timeline",
+      value: study.timeline,
+      icon: Calendar,
+      color: "purple"
+    },
+    {
+      label: "Industry",
+      value: study.industry,
+      icon: Target,
+      color: "orange"
+    }
+  ];
+
+  const approach = [
+    {
+      title: "Business Context & Challenge",
+      description: study.businessContext,
+      challenge: study.challenge,
+      icon: Lightbulb,
+      color: "blue"
+    },
+    {
+      title: "Strategy & Decision Logic",
+      description: study.strategy,
+      icon: Target,
+      color: "emerald"
+    },
+    {
+      title: "Execution Breakdown",
+      description: study.execution,
+      icon: CheckCircle2,
+      color: "purple"
+    }
+  ];
+
+  return (
+    <>
+      {/* Header Section */}
+      <section className="pt-32 pb-20 bg-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-full h-full bg-slate-50/50 -z-10 clip-path-slant"></div>
+        <HandSparkle className="hidden lg:block absolute top-[25%] left-[10%] w-10 h-10 text-yellow-400 opacity-60" delay="0.5s" />
+
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <button
+            onClick={() => {
+              onNavigate('home');
+              setTimeout(() => {
+                const element = document.getElementById('work');
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+              }, 100);
+            }}
+            className="inline-flex items-center text-slate-600 hover:text-slate-900 mb-8 transition-colors group"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+            Back to Home
+          </button>
+
+          <div className="text-center">
+            <span className="inline-block px-4 py-2 rounded-full bg-blue-50 text-sm font-bold text-blue-600 uppercase tracking-wide mb-6">
+              {study.category}
+            </span>
+
+            <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+              {study.title}
+              <HandUnderline className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-3/4 h-4 text-blue-400 opacity-80" delay="0.8s" />
+            </h1>
+
+            <p className="text-xl text-slate-500 max-w-3xl mx-auto leading-relaxed mb-8">
+              A strategic pivot from generic traffic to high-value technical leads through targeted SEO and content optimization.
+            </p>
+
+            <a href={study.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors group">
+              Visit Website <ExternalLink className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Project Details */}
+      <Section className="relative">
+        <HandSquiggle className="hidden lg:block absolute top-0 -left-12 h-64 w-16 text-slate-100" />
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {projectDetails.map((detail, idx) => {
+            const Icon = detail.icon;
+            return (
+              <div key={idx} className="bg-white rounded-2xl p-6 border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group animate-fade-in-up text-center" style={{ animationDelay: `${idx * 0.1}s` }}>
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-${detail.color}-50 group-hover:bg-${detail.color}-100 transition-colors mx-auto`}>
+                  <Icon className={`w-6 h-6 text-${detail.color}-600`} />
+                </div>
+                <div className="text-sm font-medium text-slate-500 uppercase tracking-wide mb-1">{detail.label}</div>
+                <div className="text-lg font-bold text-slate-900">{detail.value}</div>
+              </div>
+            )
+          })}
+        </div>
+      </Section>
+
+      {/* Approach Section */}
+      <Section className="bg-slate-50">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Project Approach</h2>
+          <p className="text-xl text-slate-500">How we transformed generic traffic into qualified leads</p>
+        </div>
+
+        <div className="space-y-12">
+          {approach.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <div key={idx} className="bg-white rounded-2xl p-8 border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group animate-fade-in-up" style={{ animationDelay: `${idx * 0.1}s` }}>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className={`w-14 h-14 rounded-xl flex items-center justify-center bg-${item.color}-50 group-hover:bg-${item.color}-100 transition-colors`}>
+                    <Icon className={`w-7 h-7 text-${item.color}-600`} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-900">{item.title}</h3>
+                </div>
+                <p className="text-slate-600 leading-relaxed mb-4">
+                  {item.description}
+                </p>
+                {item.challenge && (
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <p className="text-red-800 font-medium mb-1">The Challenge:</p>
+                    <p className="text-red-700">{item.challenge}</p>
+                  </div>
+                )}
+              </div>
+            )
+          })}
+        </div>
+      </Section>
+
+      {/* Tools Section */}
+      <Section className="relative">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Tools & Technologies</h2>
+          <p className="text-xl text-slate-500">The technical toolkit that powered this project</p>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-4 mb-16">
+          {study.tools.map((tool, idx) => (
+            <span key={idx} className="px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-full text-sm font-medium hover:bg-slate-50 hover:border-slate-300 transition-colors animate-fade-in-up" style={{ animationDelay: `${idx * 0.1}s` }}>
+              {tool}
+            </span>
+          ))}
+        </div>
+      </Section>
+
+      {/* Results Section */}
+      <Section className="bg-slate-50">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Measurable Results</h2>
+          <p className="text-xl text-slate-500">The impact of our solution-based SEO strategy</p>
+        </div>
+
+        <div className="max-w-4xl mx-auto mb-12">
+          <div className="bg-white rounded-2xl p-8 border border-slate-100 shadow-lg">
+            <p className="text-slate-600 leading-relaxed text-lg">
+              {study.results}
+            </p>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {study.metrics.map((metric, idx) => (
+            <div key={idx} className="bg-white rounded-2xl p-8 border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group animate-fade-in-up text-center" style={{ animationDelay: `${idx * 0.1}s` }}>
+              <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:bg-green-100 transition-colors">
+                <TrendingUp className="w-8 h-8 text-green-600" />
+              </div>
+              <div className="text-4xl font-bold text-slate-900 mb-2">{metric.value}</div>
+              <div className="text-sm font-medium text-slate-500 uppercase tracking-wide">{metric.label}</div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Project Gallery */}
+      <Section className="relative">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Project Gallery</h2>
+          <p className="text-xl text-slate-500">Visual insights into the project execution</p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {study.images.map((img, idx) => (
+            <div key={idx} className="group animate-fade-in-up" style={{ animationDelay: `${idx * 0.1}s` }}>
+              <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-1">
+                <img src={img} alt={`Project image ${idx + 1}`} className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* CTA Section */}
+      <section className="py-24 bg-slate-900 relative overflow-hidden">
+        <div className="absolute inset-0 bg-blue-600/10 mix-blend-overlay"></div>
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
+
+        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Ready to Achieve Similar Results?</h2>
+          <p className="text-slate-300 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
+            Let's discuss how data-driven SEO strategies can transform your organic growth and business outcomes.
+          </p>
+          <button
+            onClick={() => onNavigate('home')}
+            className="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-500 hover:scale-105 transition-all shadow-lg shadow-blue-900/50"
+          >
+            Start Your Project
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </button>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default CaseStudyDetail;
