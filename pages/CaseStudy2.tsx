@@ -31,10 +31,10 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ onNavigate }) => {
     execution: "Content: Published 'Comparison Guides' (e.g., Native vs. Cross-Platform for IoT) to capture decision-stage traffic. Internal Linking: Built 'Hub & Spoke' model where 'Mobile App' parent page linked down to specific 'BLE/IoT' child pages, passing authority. Conversion: Swapped generic 'Contact Us' forms for 'Request a Technical Consultation' forms, increasing perceived value.",
     results: "Lead Quality: +65% increase in form submissions for 'IoT/BLE' services. Rankings: Hit Top 3 for 'Bluetooth App Development Company' (High commercial intent). User Behavior: Average Time on Page increased from 1:15 to 2:45 due to better content structure.",
     images: [
-      "src/assets/blupixel 1.jpeg",
-      "src/assets/blupixel 2.jpeg",
-      "src/assets/blupixel 3.jpeg",
-      "src/assets/blupixel 4.jpeg",
+      "/assets/blupixel 1.jpeg",
+      "/assets/blupixel 2.jpeg",
+      "/assets/blupixel 3.jpeg",
+      "/assets/blupixel 4.jpeg",
     ],
     metrics: [
       { label: "Form Submissions", value: "+65%", trend: "up" },

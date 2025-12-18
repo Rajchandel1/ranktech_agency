@@ -31,11 +31,11 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ onNavigate }) => {
     execution: "Automation: Used Python scripts to identify 'Thin Content' pages and automatically grouped them for consolidation. Schema: Implemented Product and AggregateRating schema to show 'Stars' and 'Price' in Google results, increasing CTR. Performance: Optimized Magento caching to reduce server response time (TTFB) by 40%.",
     results: "Revenue Growth: 192% increase in annual organic revenue. Traffic: 4 Million+ increase in organic impressions. Efficiency: 162% increase in organic conversion rate.",
     images: [
-      "src/assets/ecommerce 1.jpeg",
-      "src/assets/ecommerce 2.jpeg",
-      "src/assets/ecommerce 3.jpeg",
-      "src/assets/ecommerce 4.jpeg",
-      "src/assets/ecommerce 5.jpeg",
+      "/assets/ecommerce 1.jpeg",
+      "/assets/ecommerce 2.jpeg",
+      "/assets/ecommerce 3.jpeg",
+      "/assets/ecommerce 4.jpeg",
+      "/assets/ecommerce 5.jpeg",
     ],
     metrics: [
       { label: "Organic Revenue", value: "+192%", trend: "up" },

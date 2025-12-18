@@ -518,24 +518,24 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               <div className="flex animate-scroll">
                 {/* First set of logos */}
                 <div className="flex items-center gap-12 px-8">
-                  <img src="/src/assets/company 1.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
-                  <img src="/src/assets/company 2.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
-                  <img src="/src/assets/company 3.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
-                  <img src="/src/assets/company 4.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                  <img src="/assets/company 1.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                  <img src="/assets/company 2.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                  <img src="/assets/company 3.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                  <img src="/assets/company 4.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
                 </div>
                 {/* Duplicate set for seamless loop */}
                 <div className="flex items-center gap-12 px-8">
-                  <img src="/src/assets/company 1.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
-                  <img src="/src/assets/company 2.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
-                  <img src="/src/assets/company 3.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
-                  <img src="/src/assets/company 4.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                  <img src="/assets/company 1.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                  <img src="/assets/company 2.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                  <img src="/assets/company 3.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                  <img src="/assets/company 4.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
                 </div>
                 {/* Third set for extra smoothness */}
                 <div className="flex items-center gap-12 px-8">
-                  <img src="/src/assets/company 1.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
-                  <img src="/src/assets/company 2.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
-                  <img src="/src/assets/company 3.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
-                  <img src="/src/assets/company 4.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                  <img src="/assets/company 1.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                  <img src="/assets/company 2.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                  <img src="/assets/company 3.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
+                  <img src="/assets/company 4.png" alt="Company Logo" className="h-12 md:h-16 w-32 md:w-40 object-contain transition-all duration-300 flex-shrink-0" />
                 </div>
               </div>
             </div>

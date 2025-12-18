@@ -31,11 +31,11 @@ const CaseStudyDetail: React.FC<CaseStudyDetailProps> = ({ onNavigate }) => {
     execution: "Technical: Configured dynamic XML sitemaps to auto-ping Google whenever the facility calendar was updated. Content: Rewrote the 'Facility Booking' page to address specific planner pain points (capacity, AV specs, catering), moving away from generic copy. UX: Added a 'Today at the Arena' sticky bar on mobile, reducing clicks-to-info for parents.",
     results: "Rich Results: Achieved 100% coverage for Event Snippets in Google Search. Traffic: +45% increase in organic sessions to schedule pages. Engagement: 'Get Directions' clicks on Google Maps rose by 28%.",
     images: [
-      "src/assets/redbaron 1.jpeg",
-      "src/assets/redbaron 2.jpeg",
-      "src/assets/redbaron 3.jpeg",
-      "src/assets/redbaron 4.jpeg",
-      "src/assets/redbaron 5.jpeg"
+      "/assets/redbaron 1.jpeg",
+      "/assets/redbaron 2.jpeg",
+      "/assets/redbaron 3.jpeg",
+      "/assets/redbaron 4.jpeg",
+      "/assets/redbaron 5.jpeg"
     ],
     metrics: [
       { label: "Organic Sessions", value: "+45%", trend: "up" },
